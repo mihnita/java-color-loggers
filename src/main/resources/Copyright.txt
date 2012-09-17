@@ -1,0 +1,2 @@
+Color Console Appenders for log4j
+Copyright 2012 Mihai Nita
