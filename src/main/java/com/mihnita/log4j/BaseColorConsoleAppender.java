@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.EnhancedPatternLayout;
 import org.apache.log4j.Layout;
 import org.apache.log4j.Level;
 import org.apache.log4j.PatternLayout;
@@ -71,12 +72,25 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 	 * Adds a "reset color" before the newline to prevent some ugly artifacts
 	 */
 	protected void hackPatternString() {
-		PatternLayout theLayout = (PatternLayout) this.getLayout();
-		if (null == theLayout)
+		EnhancedPatternLayout enhancedPatternLayout = null;
+		PatternLayout patternLayout = null;
+		String pattern;
+
+		Class<?> c = this.getLayout().getClass();
+		if (EnhancedPatternLayout.class.isAssignableFrom(c)) {
+			enhancedPatternLayout = (EnhancedPatternLayout) this.getLayout();
+			if (null == enhancedPatternLayout)
+				return;
+			pattern = enhancedPatternLayout.getConversionPattern();
+		} else if (PatternLayout.class.isAssignableFrom(c)) {
+			patternLayout = (PatternLayout) this.getLayout();
+			if (null == patternLayout)
+				return;
+			pattern = patternLayout.getConversionPattern();
+		} else
 			return;
 
-		String pattern = theLayout.getConversionPattern();
-		if (pattern == gPattern) // I really want to have the same object, not just equal content 
+		if (pattern == gPattern) // I really want to have the same object, not just equal content
 			return;
 
 		if (pattern.endsWith("%n"))
@@ -84,8 +98,14 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 		else
 			gPattern = pattern + COLOR_RESET;
 
-		theLayout.setConversionPattern(gPattern);
-		this.setLayout(theLayout);
+		if (null != enhancedPatternLayout) {
+			enhancedPatternLayout.setConversionPattern(gPattern);
+			this.setLayout(enhancedPatternLayout);
+		}
+		if (null != patternLayout) {
+			patternLayout.setConversionPattern(gPattern);
+			this.setLayout(patternLayout);
+		}
 	}
 
 }
