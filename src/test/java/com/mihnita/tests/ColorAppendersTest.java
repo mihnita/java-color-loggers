@@ -2,12 +2,12 @@ package com.mihnita.tests;
 
 import org.apache.log4j.Logger;
 
+import org.junit.Test;
+
 public class ColorAppendersTest {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	@Test
+	public void testColorLogging () {
 		Logger logger = Logger.getLogger(ColorAppendersTest.class);
 		logger.fatal("fatal");
 		logger.error("error");
