@@ -1,4 +1,4 @@
-log4j-color-appenders
-=====================
+java-color-loggers
+==================
 
-Color Console Appenders for log4j
+Color console logging for log4j and jdk

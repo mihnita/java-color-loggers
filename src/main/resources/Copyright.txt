@@ -1,2 +1,2 @@
-Color Console Appenders for log4j
+Color console logging for log4j and jdk
 Copyright 2012 Mihai Nita

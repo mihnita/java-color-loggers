@@ -1,4 +1,4 @@
-package com.mihnita.log4j;
+package com.colorlog.log4j;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,14 +13,14 @@ import org.apache.log4j.PatternLayout;
 
 public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 	private Map<Level, String> levelToColor = new HashMap<Level, String>();
-	private String gPattern = null;
+	private String gPattern = "";
 
 	protected static final String COLOR_RESET = "\u001b[0m";
 	{
 		levelToColor.put(Level.FATAL, "\u001b[1;37;41m");
 		levelToColor.put(Level.ERROR, "\u001b[1;31m");
-		levelToColor.put(Level.WARN, "\u001b[1;33m");
-		levelToColor.put(Level.INFO, "\u001b[22;32m");
+		levelToColor.put(Level.WARN,  "\u001b[1;33m");
+		levelToColor.put(Level.INFO,  "\u001b[22;32m");
 		levelToColor.put(Level.DEBUG, "\u001b[22;36m");
 		levelToColor.put(Level.TRACE, "\u001b[1;30m");
 	}
@@ -90,7 +90,7 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 		} else
 			return;
 
-		if (pattern == gPattern) // I really want to have the same object, not just equal content
+		if (gPattern.equals(pattern))
 			return;
 
 		if (pattern.endsWith("%n"))
