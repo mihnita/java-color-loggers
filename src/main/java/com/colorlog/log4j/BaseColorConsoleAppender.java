@@ -3,6 +3,7 @@ package com.colorlog.log4j;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.EnhancedPatternLayout;
 import org.apache.log4j.Layout;
@@ -38,27 +39,27 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 	}
 
 	public void setFatalColour(String value) {
-		levelToColor.put(Level.FATAL, value);
+		levelToColor.put(Level.FATAL, StringEscapeUtils.unescapeJava(value));
 	}
 
 	public void setErrorColour(String value) {
-		levelToColor.put(Level.ERROR, value);
+		levelToColor.put(Level.ERROR, StringEscapeUtils.unescapeJava(value));
 	}
 
 	public void setWarnColour(String value) {
-		levelToColor.put(Level.WARN, value);
+		levelToColor.put(Level.WARN, StringEscapeUtils.unescapeJava(value));
 	}
 
 	public void setInfoColour(String value) {
-		levelToColor.put(Level.INFO, value);
+		levelToColor.put(Level.INFO, StringEscapeUtils.unescapeJava(value));
 	}
 
 	public void setDebugColour(String value) {
-		levelToColor.put(Level.DEBUG, value);
+		levelToColor.put(Level.DEBUG, StringEscapeUtils.unescapeJava(value));
 	}
 
 	public void setTraceColour(String value) {
-		levelToColor.put(Level.TRACE, value);
+		levelToColor.put(Level.TRACE, StringEscapeUtils.unescapeJava(value));
 	}
 
 	protected String getColour(Level level) {
