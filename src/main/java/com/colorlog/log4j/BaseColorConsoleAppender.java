@@ -38,27 +38,27 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 	}
 
 	public void setFatalColour(String value) {
-		levelToColor.put(Level.FATAL, value);
+		levelToColor.put(Level.FATAL, value.replace("{esc}", "\u001b"));
 	}
 
 	public void setErrorColour(String value) {
-		levelToColor.put(Level.ERROR, value);
+		levelToColor.put(Level.ERROR, value.replace("{esc}", "\u001b"));
 	}
 
 	public void setWarnColour(String value) {
-		levelToColor.put(Level.WARN, value);
+		levelToColor.put(Level.WARN, value.replace("{esc}", "\u001b"));
 	}
 
 	public void setInfoColour(String value) {
-		levelToColor.put(Level.INFO, value);
+		levelToColor.put(Level.INFO, value.replace("{esc}", "\u001b"));
 	}
 
 	public void setDebugColour(String value) {
-		levelToColor.put(Level.DEBUG, value);
+		levelToColor.put(Level.DEBUG, value.replace("{esc}", "\u001b"));
 	}
 
 	public void setTraceColour(String value) {
-		levelToColor.put(Level.TRACE, value);
+		levelToColor.put(Level.TRACE, value.replace("{esc}", "\u001b"));
 	}
 
 	protected String getColour(Level level) {
