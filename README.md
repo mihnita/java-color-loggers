@@ -22,7 +22,7 @@ There are pros and cons for each option, I hope to write an article when I have 
 * <code>com.colorlog.jdk.AnsiColorConsoleHandler</code> or <code>com.colorlog.jdk.JAnsiColorConsoleHandler</code>
 as handler.<br />
 They work the same as <code>java.util.logging.ConsoleHandler</code>.<br />
-See an example in <code>src\test\resources\logJdk.properties</code>
+See an example in <code>src/test/resources/logJdk.properties</code>
 
 That's all
 
@@ -31,7 +31,7 @@ That's all
 * In <code>log4j.properties</code> (or whatever config file you use for log4j) use <code>com.colorlog.log4j.AnsiColorConsoleAppender</code>
 or <code>com.colorlog.log4j.JAnsiColorConsoleAppender</code> as appender.<br />
 They work the same as <code>org.apache.log4j.ConsoleAppender</code>.<br />
-See an example in <code>src\test\resources\log4j.properties</code> or <code>src\test\resources\log4j.xml</code>
+See an example in <code>src/test/resources/log4j.properties</code> or <code>src/test/resources/log4j.xml</code>
 
 That's all !
 
