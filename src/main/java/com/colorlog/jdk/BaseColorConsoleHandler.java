@@ -13,8 +13,8 @@ public abstract class BaseColorConsoleHandler extends ConsoleHandler {
 	protected static final String COLOR_SEVERE  = "\u001b[1;31m";
 	protected static final String COLOR_WARNING = "\u001b[1;33m";
 	protected static final String COLOR_INFO    = "\u001b[0;32m";
-	protected static final String COLOR_CONFIG  = "\u001b[0;36m";
-	protected static final String COLOR_FINE    = "\u001b[1;34m";
+	protected static final String COLOR_CONFIG  = "\u001b[1;34m";
+	protected static final String COLOR_FINE    = "\u001b[0;36m";
 	protected static final String COLOR_FINER   = "\u001b[0;35m";
 	protected static final String COLOR_FINEST  = "\u001b[1;30m";
 
