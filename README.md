@@ -45,6 +45,7 @@ And as kids of the <code>encoder</code> element you can add the following elemen
  * <code>&lt;infoColor&gt;32&lt;/infoColor&gt;</code>
  * <code>&lt;debugColor&gt;36&lt;/debugColor&gt;</code>
  * <code>&lt;traceColor&gt;1;30&lt;/traceColor&gt;</code>
+
 The values should be valid ANSI escape sequences, without the {esc}[ and the without the final 'm'
 See an example in <code>src/test/resources/logback.xml</code>
 
