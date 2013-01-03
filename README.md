@@ -52,7 +52,7 @@ That's all !
 
 ### SLF4J
 
-Nothing special about it, you configure the logger "underneath it" (jdk or log4j).
+Nothing special about it, you configure the logger "underneath it" (jdk or log4j or logback).
 
 ## Building
 
