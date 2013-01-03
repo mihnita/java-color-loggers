@@ -5,7 +5,7 @@ Color console logging for log4j and jdk
 
 ## Usage
 
-* Download the latest color-loggers jar from <a href="https://github.com/mihnita/java-color-loggers/downloads">downloads</a>
+* Download the latest color-loggers jar from <a href="curl -O http://www.mihai-nita.net/java/color-loggers-1.0.3.jar">downloads</a>
 * Download <a href="http://jansi.fusesource.org/download.html">jansi-1.9.jar</a> - optional, see below<br />
 (<code>jansi-1.9</code> is the latest one at this time, but I use nothing fancy, so I don't expect surprises with other versions)
 * Make sure the jar(s) mentioned above are somewhere in the classpath (whatever method you are using for your project)
