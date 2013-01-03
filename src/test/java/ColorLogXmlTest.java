@@ -22,19 +22,13 @@ public class ColorLogXmlTest {
 
 	@Test
 	public void testColorLogging() {
+		org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("log-log4j");
 
-		org.apache.log4j.Logger logger = org.apache.log4j.Logger
-				.getLogger("log-log4j");
-		String root = getTargetDir();
+		DOMConfigurator.configure(getTargetDir() + "log4j.xml");
 
-		DOMConfigurator.configure(root + "log4j.xml");
-
-		System.out
-				.println("===================================================");
-		System.out
-				.println("===== Color logger - log4j - XML configuration ====");
-		System.out
-				.println("===================================================");
+		System.out.println("===================================================");
+		System.out.println("===== Color logger - log4j - XML configuration ====");
+		System.out.println("===================================================");
 
 		logger.fatal("fatal with XML");
 		logger.error("error with XML");

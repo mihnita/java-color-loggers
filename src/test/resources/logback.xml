@@ -1,0 +1,29 @@
+<configuration>
+
+	<appender name="A1" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>LogbackColors> %highlight([%thread] %-5level %logger{15} - %msg) %n</pattern>
+		</encoder>
+		<withJansi>false</withJansi>
+	</appender>
+
+	<appender name="A2" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="com.colorlog.logback.ColorPatternLayoutEncoder">
+			<pattern>CustomColors > %highlight([%thread] %-5level %logger{15} - %msg) %n</pattern>
+<!--
+			<errorColor>1;31</errorColor>
+			<warningColor>1;33</warningColor>
+			<infoColor>32</infoColor>
+			<debugColor>36</debugColor>
+			<traceColor>1;30</traceColor>
+-->
+		</encoder>
+		<withJansi>false</withJansi>
+	</appender>
+
+	<root level="TRACE">
+		<appender-ref ref="A1" />
+		<appender-ref ref="A2" />
+	</root>
+
+</configuration>

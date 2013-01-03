@@ -37,8 +37,7 @@ public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
 	@Override
 	protected void subAppend(LoggingEvent event) {
 		hackPatternString();
-		PrintStream currentOutput = usingStdErr ? AnsiConsole.err
-				: AnsiConsole.out;
+		PrintStream currentOutput = usingStdErr ? AnsiConsole.err : AnsiConsole.out;
 
 		currentOutput.print(getColour(event.getLevel()));
 		currentOutput.print(getLayout().format(event));

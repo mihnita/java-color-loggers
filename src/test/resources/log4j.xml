@@ -19,7 +19,7 @@
 	<!-- ******************************************************************* -->
 	<appender name="A1" class="org.apache.log4j.ConsoleAppender" >
 		<layout class="org.apache.log4j.EnhancedPatternLayout">
-			<param name="ConversionPattern" value="Ansi > %-5p: %c{2} [%t] - %m%n"/>
+			<param name="ConversionPattern" value="log4j> %-5p: %c{2} [%t] - %m%n"/>
 		</layout>
 	</appender>
 
@@ -28,7 +28,6 @@
 	<!-- ******************************************************************* -->
 	<appender name="A2" class="com.colorlog.log4j.AnsiColorConsoleAppender" >
 		<param name="WarnColour" value="{esc}[0;33m" />
-		<param name="InfoColour" value="{esc}[22;32m" />
     
 		<layout class="org.apache.log4j.EnhancedPatternLayout">
 			<param name="ConversionPattern" value="Ansi > %-5p: %c{2} [%t] - %m%n"/>
@@ -39,8 +38,6 @@
 	<!-- JAnsiColorConsoleAppender -->
 	<!-- ******************************************************************* -->
 	<appender name="A3" class="com.colorlog.log4j.JAnsiColorConsoleAppender" >
-		<param name="WarnColour" value="{esc}[0;33m" />
-		<param name="InfoColour" value="{esc}[22;32m" />
 
 		<!--
 		<param name="PassThrough" value="true" />
