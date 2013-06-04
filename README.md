@@ -59,7 +59,7 @@ Nothing special about it, you configure the logger "underneath it" (jdk or log4j
 
 * <code>mvn clean install</code>
 
-But maven (or maybe junit?) highjack the output of the test.
+But maven (or maybe junit?) highjacks the output of the test.
 So not all the lines that would normally be colored are colored in the maven test.
 The best way to try things is to run the tests in ColorLogTest.java as a normal application
 against the final jar (with the 3rd party jars in "the right place").
