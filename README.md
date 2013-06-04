@@ -5,9 +5,9 @@ Color console logging for log4j and jdk
 
 ## Usage
 
-* Download the latest color-loggers jar from <a href="http://www.mihai-nita.net/java/color-loggers-1.0.3.jar">downloads</a>
-* Download <a href="http://jansi.fusesource.org/download.html">jansi-1.9.jar</a> - optional, see below<br />
-(<code>jansi-1.9</code> is the latest one at this time, but I use nothing fancy, so I don't expect surprises with other versions)
+* Download the latest color-loggers jar from <a href="http://www.mihai-nita.net/eclipse/color-loggers-1.0.3.jar">downloads</a> or build them yourself
+* Download <a href="http://jansi.fusesource.org/download.html">jansi-1.11.jar</a> - optional, see below<br />
+(<code>jansi-1.11</code> is the latest one at this time, but I use nothing fancy, so I don't expect surprises with other versions)
 * Make sure the jar(s) mentioned above are somewhere in the classpath (whatever method you are using for your project)
 
 On Mac OS X, Linux, UNIX, or Windows with <a href="https://github.com/adoxa/ansicon/downloads">ansicon</a> you
