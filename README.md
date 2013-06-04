@@ -39,7 +39,7 @@ See an example in <code>src/test/resources/log4j.properties</code> or <code>src/
 In <code>logback.xml</code> (or whatever config file you use for Logback) find the appender that uses
 <code>ch.qos.logback.core.ConsoleAppender</code>, find the <code>encoder</code> element, and add a <code>class</code> attribute
 with the value of <code>com.colorlog.logback.ColorPatternLayoutEncoder</code>.<br />
-And as kids of the <code>encoder</code> element you can add the following elements to configure the colors:
+And as children of the <code>encoder</code> element you can add the following elements to configure the colors:
  * <code>&lt;errorColor&gt;1;31&lt;/errorColor&gt;</code>
  * <code>&lt;warningColor&gt;1;33&lt;/warningColor&gt;</code>
  * <code>&lt;infoColor&gt;32&lt;/infoColor&gt;</code>
