@@ -14,6 +14,9 @@ import org.apache.log4j.PatternLayout;
 public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 	private Map<Level, String> levelToColor = new HashMap<Level, String>();
 	private String gPattern = "";
+	private boolean gPatternHighlight = false;
+	static final String HIGHLIGHT_START = "{highlight}";
+	static final String HIGHLIGHT_END = "{/highlight}";
 
 	protected static final String COLOR_RESET = "\u001b[0m";
 	{
@@ -71,7 +74,7 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 	/*
 	 * Adds a "reset color" before the newline to prevent some ugly artifacts
 	 */
-	protected void hackPatternString() {
+	protected boolean hackPatternString() {
 		EnhancedPatternLayout enhancedPatternLayout = null;
 		PatternLayout patternLayout = null;
 		String pattern;
@@ -80,20 +83,27 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 		if (EnhancedPatternLayout.class.isAssignableFrom(c)) {
 			enhancedPatternLayout = (EnhancedPatternLayout) this.getLayout();
 			if (null == enhancedPatternLayout)
-				return;
+				return gPatternHighlight;
 			pattern = enhancedPatternLayout.getConversionPattern();
 		} else if (PatternLayout.class.isAssignableFrom(c)) {
 			patternLayout = (PatternLayout) this.getLayout();
 			if (null == patternLayout)
-				return;
+				return gPatternHighlight;
 			pattern = patternLayout.getConversionPattern();
 		} else
-			return;
+			return gPatternHighlight;
 
 		if (gPattern.equals(pattern))
-			return;
+			return gPatternHighlight;
 
-		if (pattern.endsWith("%n"))
+		int hiStart = pattern.indexOf(HIGHLIGHT_START);
+		gPatternHighlight = (hiStart != -1);
+
+		// If we have a {/highlight}, we put the COLOR_RESET there
+		// Otherwise we put it at the end, or right before the final %n
+		if (-1 != pattern.indexOf(HIGHLIGHT_END))
+			gPattern = pattern.replace(HIGHLIGHT_END, COLOR_RESET);
+		else if (pattern.endsWith("%n"))
 			gPattern = pattern.substring(0, pattern.length() - 2) + COLOR_RESET + "%n";
 		else
 			gPattern = pattern + COLOR_RESET;
@@ -106,6 +116,8 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 			patternLayout.setConversionPattern(gPattern);
 			this.setLayout(patternLayout);
 		}
+
+		return gPatternHighlight;
 	}
 
 }

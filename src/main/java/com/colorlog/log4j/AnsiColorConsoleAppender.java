@@ -21,10 +21,13 @@ public class AnsiColorConsoleAppender extends BaseColorConsoleAppender {
 
 	@Override
 	protected void subAppend(LoggingEvent event) {
-		hackPatternString();
-
-		qw.write(getColour(event.getLevel()));
-		qw.write(getLayout().format(event));
+		if (!hackPatternString()) {
+			qw.write(getColour(event.getLevel()));
+			qw.write(getLayout().format(event));
+		} else {
+			String color = getColour(event.getLevel());
+			qw.write(getLayout().format(event).replace(HIGHLIGHT_START, color));
+		}
 
 		if (immediateFlush)
 			qw.flush();

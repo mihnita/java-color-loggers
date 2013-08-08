@@ -36,22 +36,26 @@ public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
 
 	@Override
 	protected void subAppend(LoggingEvent event) {
-		hackPatternString();
 		PrintStream currentOutput = usingStdErr ? AnsiConsole.err : AnsiConsole.out;
 
-		currentOutput.print(getColour(event.getLevel()));
-		currentOutput.print(getLayout().format(event));
+		if (!hackPatternString()) {
+			currentOutput.print(getColour(event.getLevel()));
+			currentOutput.print(getLayout().format(event));
+		} else {
+			String color = getColour(event.getLevel());
+			currentOutput.print(getLayout().format(event).replace(HIGHLIGHT_START, color));
+		}
 
 		if (immediateFlush)
 			currentOutput.flush();
 	}
 
 	@Override
-	protected void hackPatternString() {
+	protected boolean hackPatternString() {
 		String theTarget = getTarget();
 		if (gTarget != theTarget) // I really want to have the same object, not just equal content
 			usingStdErr = SYSTEM_ERR.equalsIgnoreCase(theTarget);
 
-		super.hackPatternString();
+		return super.hackPatternString();
 	}
 }
