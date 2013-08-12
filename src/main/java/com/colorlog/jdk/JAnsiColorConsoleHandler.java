@@ -5,8 +5,8 @@ import java.util.logging.LogRecord;
 import org.fusesource.jansi.AnsiConsole;
 
 public class JAnsiColorConsoleHandler extends BaseColorConsoleHandler {
-	@Override
-	public void publish(LogRecord record) {
-		AnsiConsole.err.print(logRecordToString(record));
-	}
+    @Override
+    public void publish(LogRecord record) {
+        AnsiConsole.err.print(logRecordToString(record));
+    }
 }

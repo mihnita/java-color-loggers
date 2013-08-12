@@ -7,29 +7,29 @@ import org.apache.log4j.spi.LoggingEvent;
 
 public class AnsiColorConsoleAppender extends BaseColorConsoleAppender {
 
-	public AnsiColorConsoleAppender() {
-		super();
-	}
+    public AnsiColorConsoleAppender() {
+        super();
+    }
 
-	public AnsiColorConsoleAppender(Layout layout) {
-		super(layout);
-	}
+    public AnsiColorConsoleAppender(Layout layout) {
+        super(layout);
+    }
 
-	public AnsiColorConsoleAppender(Layout layout, String target) {
-		super(layout, target);
-	}
+    public AnsiColorConsoleAppender(Layout layout, String target) {
+        super(layout, target);
+    }
 
-	@Override
-	protected void subAppend(LoggingEvent event) {
-		if (!hackPatternString()) {
-			qw.write(getColour(event.getLevel()));
-			qw.write(getLayout().format(event));
-		} else {
-			String color = getColour(event.getLevel());
-			qw.write(getLayout().format(event).replace(HIGHLIGHT_START, color));
-		}
+    @Override
+    protected void subAppend(LoggingEvent event) {
+        if (!hackPatternString()) {
+            qw.write(getColour(event.getLevel()));
+            qw.write(getLayout().format(event));
+        } else {
+            String color = getColour(event.getLevel());
+            qw.write(getLayout().format(event).replace(HIGHLIGHT_START, color));
+        }
 
-		if (immediateFlush)
-			qw.flush();
-	}
+        if (immediateFlush)
+            qw.flush();
+    }
 }
