@@ -1,13 +1,7 @@
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.HashSet;
 
-import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 public class ColorBaseTest {
@@ -28,8 +22,8 @@ public class ColorBaseTest {
 
 	static void pressEnter() {
 		if (waitForEnter) {
-	        System.out.println("Press ENTER to continue...");
-			Scanner scan = new Scanner (System.in);
+			System.out.println("Press ENTER to continue...");
+			Scanner scan = new Scanner(System.in);
 			scan.nextLine();
 			scan.close();
 		}

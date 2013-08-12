@@ -19,6 +19,7 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 	static final String HIGHLIGHT_END = "{/highlight}";
 
 	protected static final String COLOR_RESET = "\u001b[0m";
+
 	{
 		levelToColor.put(Level.FATAL, "\u001b[1;37;41m");
 		levelToColor.put(Level.ERROR, "\u001b[1;31m");

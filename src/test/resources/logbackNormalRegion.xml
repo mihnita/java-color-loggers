@@ -1,0 +1,14 @@
+<configuration>
+
+	<appender name="A" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>LogbackColorsReg> %highlight(%-5level:) %logger{15} - %msg%n</pattern>
+		</encoder>
+		<withJansi>false</withJansi>
+	</appender>
+
+	<root level="TRACE">
+		<appender-ref ref="A" />
+	</root>
+
+</configuration>

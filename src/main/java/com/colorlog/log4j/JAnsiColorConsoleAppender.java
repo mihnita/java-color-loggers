@@ -36,6 +36,8 @@ public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
 
 	@Override
 	protected void subAppend(LoggingEvent event) {
+		@SuppressWarnings("resource")
+		// Eclipse complains about this not being closed, but this is stdout/stderr.
 		PrintStream currentOutput = usingStdErr ? AnsiConsole.err : AnsiConsole.out;
 
 		if (!hackPatternString()) {
