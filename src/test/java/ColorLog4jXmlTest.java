@@ -10,8 +10,12 @@ public class ColorLog4jXmlTest extends ColorBaseTest {
         System.out.println("===================================================");
     }
 
-    public void doTheLogging(String configFileName) {
+    public void selectLoggingConfigFile(String configFileName) {
         DOMConfigurator.configure(getTargetDir() + configFileName);
+    }
+
+    public void doTheLogging(String configFileName) {
+        selectLoggingConfigFile(configFileName);
 
         System.out.println();
         logger.fatal("fatal with XML");

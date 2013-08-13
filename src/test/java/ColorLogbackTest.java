@@ -14,7 +14,7 @@ public class ColorLogbackTest extends ColorBaseTest {
         System.out.println("===============================");
     }
 
-    public void doTheLogging(String configFileName) {
+    public void selectLoggingConfigFile(String configFileName) {
         LoggerContext context = (LoggerContext) org.slf4j.LoggerFactory.getILoggerFactory();
 
         try {
@@ -26,6 +26,10 @@ public class ColorLogbackTest extends ColorBaseTest {
             // StatusPrinter will handle this
         }
         StatusPrinter.printInCaseOfErrorsOrWarnings(context);
+    }
+
+    public void doTheLogging(String configFileName) {
+        selectLoggingConfigFile(configFileName);
 
         System.out.println();
         logger.error("error");

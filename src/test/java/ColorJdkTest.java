@@ -13,7 +13,7 @@ public class ColorJdkTest extends ColorBaseTest {
         System.out.println("===============================");
     }
 
-    public void doTheLogging(String configFileName) {
+    public void selectLoggingConfigFile(String configFileName) {
         InputStream ins = null;
         try {
             ins = new FileInputStream(getTargetDir() + configFileName);
@@ -21,13 +21,18 @@ public class ColorJdkTest extends ColorBaseTest {
         } catch (IOException e) {
             logger.severe("Error loading custom logging configuration " + configFileName);
         } finally {
-            if (null != ins)
+            if (null != ins) {
                 try {
                     ins.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+			}
         }
+    }
+
+    public void doTheLogging(String configFileName) {
+        selectLoggingConfigFile(configFileName);
 
         System.out.println();
         logger.severe("severe");
