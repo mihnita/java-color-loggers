@@ -8,5 +8,6 @@ public class JAnsiColorConsoleHandler extends BaseColorConsoleHandler {
     @Override
     public void publish(LogRecord record) {
         AnsiConsole.err.print(logRecordToString(record));
+        AnsiConsole.err.flush();
     }
 }
