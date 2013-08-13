@@ -41,5 +41,6 @@ public class ColorLogbackTest extends ColorBaseTest {
         doTheLogging("logbackNormalRegion.xml");
         doTheLogging("logbackColorEsc.xml");
         doTheLogging("logbackColorEscRegion.xml");
+        System.out.println();
     }
 }

@@ -44,5 +44,6 @@ public class ColorJdkTest extends ColorBaseTest {
         doTheLogging("logJdkNormal.properties");
         doTheLogging("logJdkColorEsc.properties");
         doTheLogging("logJdkColorJansi.properties");
+        System.out.println();
     }
 }
