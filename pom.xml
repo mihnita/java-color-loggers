@@ -3,7 +3,7 @@
 
 	<groupId>com.mihnita</groupId>
 	<artifactId>color-loggers</artifactId>
-	<version>1.0.5-SNAPSHOT</version>
+	<version>1.0.5</version>
 	<name>Color Loggers</name>
 
 	<properties>
