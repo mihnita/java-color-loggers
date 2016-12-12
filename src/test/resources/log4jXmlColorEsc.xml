@@ -15,12 +15,12 @@
 	<appender name="A" class="com.mihnita.colorlog.log4j.AnsiColorConsoleAppender" >
 
 		<!-- You can change the default colors -->
-		<!-- <param name="FatalColour" value="{esc}[1;35m" /> -->
-		<!-- <param name="ErrorColour" value="{esc}[0;31m" /> -->
-		<!-- <param name="WarnColour" value="{esc}[0;33m" /> -->
-		<!-- <param name="InfoColour" value="{esc}[1;32m" /> -->
-		<!-- <param name="DebugColour" value="{esc}[1;36m" /> -->
-		<!-- <param name="TraceColour" value="{esc}[1;30m" /> -->
+		<!-- <param name="FatalColour" value="{esc}[95m" /> -->
+		<!-- <param name="ErrorColour" value="{esc}[31m" /> -->
+		<!-- <param name="WarnColour" value="{esc}[33m" /> -->
+		<!-- <param name="InfoColour" value="{esc}[92m" /> -->
+		<!-- <param name="DebugColour" value="{esc}[96m" /> -->
+		<!-- <param name="TraceColour" value="{esc}[90m" /> -->
 
 		<layout class="org.apache.log4j.EnhancedPatternLayout">
 			<param name="ConversionPattern" value="Ansi> %-5p: %c{2} [%t] - %m%n"/>

@@ -21,12 +21,12 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
     protected static final String COLOR_RESET = "\u001b[0m";
 
     {
-        levelToColor.put(Level.FATAL, "\u001b[1;37;41m");
-        levelToColor.put(Level.ERROR, "\u001b[1;31m");
-        levelToColor.put(Level.WARN,  "\u001b[1;33m");
+        levelToColor.put(Level.FATAL, "\u001b[97;41m");
+        levelToColor.put(Level.ERROR, "\u001b[91m");
+        levelToColor.put(Level.WARN,  "\u001b[93m");
         levelToColor.put(Level.INFO,  "\u001b[22;32m");
         levelToColor.put(Level.DEBUG, "\u001b[22;36m");
-        levelToColor.put(Level.TRACE, "\u001b[1;30m");
+        levelToColor.put(Level.TRACE, "\u001b[90m");
     }
 
     public BaseColorConsoleAppender() {
