@@ -1,4 +1,4 @@
-package com.colorlog.log4j;
+package com.mihnita.colorlog.log4j;
 
 import java.io.PrintStream;
 

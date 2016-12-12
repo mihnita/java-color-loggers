@@ -12,7 +12,7 @@
 	<!-- ******************************************************************* -->
 	<!-- AnsiColorConsoleAppender with Highlight -->
 	<!-- ******************************************************************* -->
-	<appender name="A" class="com.colorlog.log4j.AnsiColorConsoleAppender" >
+	<appender name="A" class="com.mihnita.colorlog.log4j.AnsiColorConsoleAppender" >
 
 		<!-- You can change the default colors -->
 		<!-- <param name="FatalColour" value="{esc}[1;35m" /> -->

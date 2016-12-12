@@ -1,7 +1,7 @@
 <configuration>
 
 	<appender name="A" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder class="com.colorlog.logback.ColorPatternLayoutEncoder">
+		<encoder class="com.mihnita.colorlog.logback.ColorPatternLayoutEncoder">
 			<pattern>%highlight(CustomColors> %-5level: %logger{15} - %msg) %n</pattern>
 			<!--
 			<errorColor>1;31</errorColor>

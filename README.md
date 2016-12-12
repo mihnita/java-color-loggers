@@ -19,7 +19,7 @@ There are pros and cons for each option, I hope to write an article when I have 
 ### JDK
 
 * In the java logging configuration file (default in <code>JAVA_HOME/lib/logging.properties</code>) use
-* <code>com.colorlog.jdk.AnsiColorConsoleHandler</code> or <code>com.colorlog.jdk.JAnsiColorConsoleHandler</code>
+* <code>com.mihnita.colorlog.jdk.AnsiColorConsoleHandler</code> or <code>com.mihnita.colorlog.jdk.JAnsiColorConsoleHandler</code>
 as handler.<br />
 They work the same as <code>java.util.logging.ConsoleHandler</code>.<br />
 See an example in <code>src/test/resources/logJdk.properties</code>
@@ -28,8 +28,8 @@ That's all
 
 ### LOG4J
 
-* In <code>log4j.properties</code> (or whatever config file you use for log4j) use <code>com.colorlog.log4j.AnsiColorConsoleAppender</code>
-or <code>com.colorlog.log4j.JAnsiColorConsoleAppender</code> as appender.<br />
+* In <code>log4j.properties</code> (or whatever config file you use for log4j) use <code>com.mihnita.colorlog.log4j.AnsiColorConsoleAppender</code>
+or <code>com.mihnita.colorlog.log4j.JAnsiColorConsoleAppender</code> as appender.<br />
 They work the same as <code>org.apache.log4j.ConsoleAppender</code>.<br />
 See an example in <code>src/test/resources/log4j.properties</code> or <code>src/test/resources/log4j.xml</code>
 
@@ -38,7 +38,7 @@ See an example in <code>src/test/resources/log4j.properties</code> or <code>src/
 * Logback already allows for colored output using jansi, but does not allow configuring the colors. But now you can.
 In <code>logback.xml</code> (or whatever config file you use for Logback) find the appender that uses
 <code>ch.qos.logback.core.ConsoleAppender</code>, find the <code>encoder</code> element, and add a <code>class</code> attribute
-with the value of <code>com.colorlog.logback.ColorPatternLayoutEncoder</code>.<br />
+with the value of <code>com.mihnita.colorlog.logback.ColorPatternLayoutEncoder</code>.<br />
 And as children of the <code>encoder</code> element you can add the following elements to configure the colors:
  * <code>&lt;errorColor&gt;1;31&lt;/errorColor&gt;</code>
  * <code>&lt;warningColor&gt;1;33&lt;/warningColor&gt;</code>

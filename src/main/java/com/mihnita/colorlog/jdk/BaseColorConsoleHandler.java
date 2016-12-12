@@ -1,4 +1,4 @@
-package com.colorlog.jdk;
+package com.mihnita.colorlog.jdk;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;

@@ -1,4 +1,4 @@
-package com.colorlog.logback;
+package com.mihnita.colorlog.logback;
 
 import ch.qos.logback.classic.PatternLayout;
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
@@ -11,7 +11,7 @@ public class ColorPatternLayoutEncoder extends PatternLayoutEncoder {
 
         PatternLayout patternLayout = (PatternLayout) this.layout;
         patternLayout.stop();
-        patternLayout.getInstanceConverterMap().put("highlight", "com.colorlog.logback.CustomHighlightingCompositeConverter");
+        patternLayout.getInstanceConverterMap().put("highlight", "com.mihnita.colorlog.logback.CustomHighlightingCompositeConverter");
         patternLayout.start();
 
         this.layout = patternLayout;

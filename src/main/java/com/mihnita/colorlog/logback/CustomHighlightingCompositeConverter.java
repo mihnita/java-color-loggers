@@ -1,4 +1,4 @@
-package com.colorlog.logback;
+package com.mihnita.colorlog.logback;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.spi.ILoggingEvent;

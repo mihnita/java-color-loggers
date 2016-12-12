@@ -1,4 +1,4 @@
-package com.colorlog.log4j;
+package com.mihnita.colorlog.log4j;
 
 import org.apache.log4j.Layout;
 import org.apache.log4j.spi.LoggingEvent;

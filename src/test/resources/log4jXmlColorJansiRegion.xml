@@ -12,7 +12,7 @@
 	<!-- ******************************************************************* -->
 	<!-- JAnsiColorConsoleAppender with Highlight -->
 	<!-- ******************************************************************* -->
-	<appender name="A" class="com.colorlog.log4j.JAnsiColorConsoleAppender" >
+	<appender name="A" class="com.mihnita.colorlog.log4j.JAnsiColorConsoleAppender" >
 
 		<!-- Lets the ANSI escape sequences to pass thru, instead of calling Windows API to set color -->
 		<!-- <param name="PassThrough" value="true" /> -->
