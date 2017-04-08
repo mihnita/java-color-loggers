@@ -10,13 +10,13 @@ import java.util.logging.LogRecord;
 public abstract class BaseColorConsoleHandler extends ConsoleHandler {
     protected static final String COLOR_RESET   = "\u001b[0m";
 
-    protected static final String COLOR_SEVERE  = "\u001b[91m";
-    protected static final String COLOR_WARNING = "\u001b[93m";
-    protected static final String COLOR_INFO    = "\u001b[32m";
-    protected static final String COLOR_CONFIG  = "\u001b[94m";
-    protected static final String COLOR_FINE    = "\u001b[36m";
-    protected static final String COLOR_FINER   = "\u001b[35m";
-    protected static final String COLOR_FINEST  = "\u001b[90m";
+    protected static final String COLOR_SEVERE  = "\u001b[1;37;41m";
+    protected static final String COLOR_WARNING = "\u001b[1;33m";
+    protected static final String COLOR_INFO    = "\u001b[0;32m";
+    protected static final String COLOR_CONFIG  = "\u001b[1;32m";
+    protected static final String COLOR_FINE    = "\u001b[0;36m";
+    protected static final String COLOR_FINER   = "\u001b[0;34m";
+    protected static final String COLOR_FINEST  = "\u001b[1;35m";
 
     String logRecordToString(LogRecord record) {
         Formatter f = getFormatter();

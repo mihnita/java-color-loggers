@@ -8,7 +8,7 @@
 			<warningColor>1;33</warningColor>
 			<infoColor>32</infoColor>
 			<debugColor>36</debugColor>
-			<traceColor>1;30</traceColor>
+			<traceColor>1;34</traceColor>
 			-->
 		</encoder>
 		<withJansi>false</withJansi>
