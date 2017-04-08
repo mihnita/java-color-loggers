@@ -11,7 +11,7 @@ public class CustomHighlightingCompositeConverter extends ForegroundCompositeCon
     static String warningColor = BOLD + YELLOW_FG;
     static String infoColor    = GREEN_FG;
     static String debugColor   = CYAN_FG;
-    static String traceColor   = BOLD + BLACK_FG;
+    static String traceColor   = BOLD + BLUE_FG;
 
     @Override
     protected String getForegroundColorCode(ILoggingEvent event) {

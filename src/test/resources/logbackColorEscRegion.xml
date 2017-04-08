@@ -4,11 +4,11 @@
 		<encoder class="com.mihnita.colorlog.logback.ColorPatternLayoutEncoder">
 			<pattern>CustomColorsReg> %highlight(%-5level:) %logger{15} - %msg%n</pattern>
 			<!--
-			<errorColor>1;31</errorColor>
-			<warningColor>1;33</warningColor>
+			<errorColor>91</errorColor>
+			<warningColor>93</warningColor>
 			<infoColor>32</infoColor>
 			<debugColor>36</debugColor>
-			<traceColor>1;30</traceColor>
+			<traceColor>94</traceColor>
 			-->
 		</encoder>
 		<withJansi>false</withJansi>
