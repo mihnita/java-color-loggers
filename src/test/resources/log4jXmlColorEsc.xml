@@ -20,7 +20,7 @@
 		<!-- <param name="WarnColour" value="{esc}[33m" /> -->
 		<!-- <param name="InfoColour" value="{esc}[92m" /> -->
 		<!-- <param name="DebugColour" value="{esc}[96m" /> -->
-		<!-- <param name="TraceColour" value="{esc}[90m" /> -->
+		<!-- <param name="TraceColour" value="{esc}[94m" /> -->
 
 		<layout class="org.apache.log4j.EnhancedPatternLayout">
 			<param name="ConversionPattern" value="Ansi> %-5p: %c{2} [%t] - %m%n"/>
