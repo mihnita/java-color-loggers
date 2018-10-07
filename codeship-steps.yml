@@ -1,0 +1,9 @@
+- name: mvn
+  service: logcolorsrv
+  command: mvn -q install
+- name: build
+  service: logcolorsrv
+  command: javac -version
+- name: list_all
+  service: logcolorsrv
+  command: find /

@@ -1,0 +1,4 @@
+logcolorsrv:
+  build:
+    image: logcolorimg
+    dockerfile: Dockerfile
