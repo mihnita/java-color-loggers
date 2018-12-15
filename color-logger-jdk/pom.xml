@@ -6,7 +6,6 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mihnita</groupId>
 	<artifactId>color-logger-jdk</artifactId>
 	<name>Color Loggers - JDK</name>
 	<description>A logging extensions that adds level-based color to java.util.Logging (JUL).</description>

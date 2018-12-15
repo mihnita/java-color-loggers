@@ -1,20 +1,21 @@
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class ColorLog4jTest extends ColorBaseTest {
-    org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("log-log4j");
+    private final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("log-log4j");
 
-    {
+    static {
         System.out.println("===============================");
         System.out.println("===== Color logger - log4j ====");
         System.out.println("===============================");
     }
 
-    public void selectLoggingConfigFile(String configFileName) {
+    private static void selectLoggingConfigFile(String configFileName) {
         PropertyConfigurator.configure(getTargetDir() + configFileName);
     }
 
-    public void doTheLogging(String configFileName) {
+    private void doTheLogging(String configFileName) {
         selectLoggingConfigFile(configFileName);
 
         System.out.println();

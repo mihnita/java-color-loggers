@@ -6,7 +6,6 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mihnita</groupId>
 	<artifactId>color-logger-log4j</artifactId>
 	<name>Color Loggers - Log4j</name>
 	<description>A logging extension that adds level-based color to Log4j.</description>

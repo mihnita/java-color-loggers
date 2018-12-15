@@ -3,8 +3,8 @@ package com.mihnita.colorlog.log4j;
 import org.apache.log4j.Layout;
 import org.apache.log4j.spi.LoggingEvent;
 
-// Color Console Appender for log4j: using ANSI sequences directly (no dependencies)
-
+/** Color Console Appender for log4j: using ANSI sequences directly (no dependencies) */
+@SuppressWarnings("javadoc")
 public class AnsiColorConsoleAppender extends BaseColorConsoleAppender {
 
     public AnsiColorConsoleAppender() {

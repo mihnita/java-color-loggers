@@ -9,16 +9,15 @@ import org.apache.log4j.Layout;
 import org.apache.log4j.Level;
 import org.apache.log4j.PatternLayout;
 
-// Color Console Appender for log4j: using ANSI sequences
-
-public abstract class BaseColorConsoleAppender extends ConsoleAppender {
-    private Map<Level, String> levelToColor = new HashMap<Level, String>();
+/** Color Console Appender for log4j: using ANSI sequences */
+abstract class BaseColorConsoleAppender extends ConsoleAppender {
+    private final Map<Level, String> levelToColor = new HashMap<>();
     private String gPattern = "";
     private boolean gPatternHighlight = false;
     static final String HIGHLIGHT_START = "{highlight}";
-    static final String HIGHLIGHT_END = "{/highlight}";
+    private static final String HIGHLIGHT_END = "{/highlight}";
 
-    protected static final String COLOR_RESET = "\u001b[0m";
+    private static final String COLOR_RESET = "\u001b[0m";
 
     {
         levelToColor.put(Level.FATAL, "\u001b[97;41m");
@@ -29,15 +28,15 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
         levelToColor.put(Level.TRACE, "\u001b[90m");
     }
 
-    public BaseColorConsoleAppender() {
+    BaseColorConsoleAppender() {
         super();
     }
 
-    public BaseColorConsoleAppender(Layout layout) {
+    BaseColorConsoleAppender(Layout layout) {
         super(layout);
     }
 
-    public BaseColorConsoleAppender(Layout layout, String target) {
+    BaseColorConsoleAppender(Layout layout, String target) {
         super(layout, target);
     }
 
@@ -65,7 +64,7 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
         levelToColor.put(Level.TRACE, value.replace("{esc}", "\u001b"));
     }
 
-    protected String getColour(Level level) {
+    String getColour(Level level) {
         String result = levelToColor.get(level);
         if (null == result)
             return levelToColor.get(Level.ERROR);
@@ -75,7 +74,7 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
     /*
      * Adds a "reset color" before the newline to prevent some ugly artifacts
      */
-    protected boolean hackPatternString() {
+    boolean hackPatternString() {
         EnhancedPatternLayout enhancedPatternLayout = null;
         PatternLayout patternLayout = null;
         String pattern;
@@ -102,7 +101,7 @@ public abstract class BaseColorConsoleAppender extends ConsoleAppender {
 
         // If we have a {/highlight}, we put the COLOR_RESET there
         // Otherwise we put it at the end, or right before the final %n
-        if (-1 != pattern.indexOf(HIGHLIGHT_END))
+        if (pattern.contains(HIGHLIGHT_END))
             gPattern = pattern.replace(HIGHLIGHT_END, COLOR_RESET);
         else if (pattern.endsWith("%n"))
             gPattern = pattern.substring(0, pattern.length() - 2) + COLOR_RESET + "%n";

@@ -6,6 +6,7 @@ import ch.qos.logback.core.pattern.color.ForegroundCompositeConverterBase;
 
 import static ch.qos.logback.core.pattern.color.ANSIConstants.*;
 
+@SuppressWarnings("javadoc")
 public class CustomHighlightingCompositeConverter extends ForegroundCompositeConverterBase<ILoggingEvent> {
     static String errorColor   = BOLD + RED_FG;
     static String warningColor = BOLD + YELLOW_FG;

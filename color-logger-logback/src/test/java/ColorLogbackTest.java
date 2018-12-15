@@ -5,16 +5,17 @@ import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
 import ch.qos.logback.core.util.StatusPrinter;
 
+@SuppressWarnings("javadoc")
 public class ColorLogbackTest extends ColorBaseTest {
-    org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger("log-logback");
+    private final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger("log-logback");
 
-    {
+    static {
         System.out.println("===============================");
         System.out.println("==== Color logger - logback ===");
         System.out.println("===============================");
     }
 
-    public void selectLoggingConfigFile(String configFileName) {
+    private static void selectLoggingConfigFile(String configFileName) {
         LoggerContext context = (LoggerContext) org.slf4j.LoggerFactory.getILoggerFactory();
 
         try {
@@ -22,13 +23,13 @@ public class ColorLogbackTest extends ColorBaseTest {
             configurator.setContext(context);
             context.reset();
             configurator.doConfigure(getTargetDir() + configFileName);
-        } catch (JoranException e) {
+        } catch (@SuppressWarnings("unused") JoranException e) {
             // StatusPrinter will handle this
         }
         StatusPrinter.printInCaseOfErrorsOrWarnings(context);
     }
 
-    public void doTheLogging(String configFileName) {
+    private void doTheLogging(String configFileName) {
         selectLoggingConfigFile(configFileName);
 
         System.out.println();

@@ -6,11 +6,14 @@ import org.apache.log4j.Layout;
 import org.apache.log4j.spi.LoggingEvent;
 import org.fusesource.jansi.AnsiConsole;
 
-// Color Console Appender for log4j: using jansi (http://jansi.fusesource.org/)
-
+/**
+ * Color Console Appender for log4j: using jansi
+ * (<a href="http://jansi.fusesource.org/">http://jansi.fusesource.org/</a>)
+ * */
+@SuppressWarnings("javadoc")
 public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
-    String gTarget = null;
-    boolean usingStdErr;
+    private final String gTarget = null;
+    private boolean usingStdErr;
 
     public JAnsiColorConsoleAppender() {
         super();
@@ -53,8 +56,9 @@ public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
     }
 
     @Override
-    protected boolean hackPatternString() {
+    boolean hackPatternString() {
         String theTarget = getTarget();
+        //noinspection StringEquality
         if (gTarget != theTarget) // I really want to have the same object, not just equal content
             usingStdErr = SYSTEM_ERR.equalsIgnoreCase(theTarget);
 

@@ -6,7 +6,6 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mihnita</groupId>
 	<artifactId>color-logger-logback</artifactId>
 	<name>Color Loggers - Logback</name>
 	<description>A logging extension that adds level-based color to Logback.</description>

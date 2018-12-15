@@ -5,18 +5,17 @@ import java.util.logging.Formatter;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-// Color Console Handler for jdk: using ANSI sequences
+/** Color Console Handler for jdk: using ANSI sequences */
+abstract class BaseColorConsoleHandler extends ConsoleHandler {
+    private static final String COLOR_RESET   = "\u001b[0m";
 
-public abstract class BaseColorConsoleHandler extends ConsoleHandler {
-    protected static final String COLOR_RESET   = "\u001b[0m";
-
-    protected static final String COLOR_SEVERE  = "\u001b[91m";
-    protected static final String COLOR_WARNING = "\u001b[93m";
-    protected static final String COLOR_INFO    = "\u001b[32m";
-    protected static final String COLOR_CONFIG  = "\u001b[94m";
-    protected static final String COLOR_FINE    = "\u001b[36m";
-    protected static final String COLOR_FINER   = "\u001b[35m";
-    protected static final String COLOR_FINEST  = "\u001b[90m";
+    private static final String COLOR_SEVERE  = "\u001b[91m";
+    private static final String COLOR_WARNING = "\u001b[93m";
+    private static final String COLOR_INFO    = "\u001b[32m";
+    private static final String COLOR_CONFIG  = "\u001b[94m";
+    private static final String COLOR_FINE    = "\u001b[36m";
+    private static final String COLOR_FINER   = "\u001b[35m";
+    private static final String COLOR_FINEST  = "\u001b[90m";
 
     String logRecordToString(LogRecord record) {
         Formatter f = getFormatter();
