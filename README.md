@@ -70,8 +70,11 @@ Nothing special about it, you configure the logger "underneath it" (jdk or log4j
 
 ---
 
-## Build status
-[![Build Status](https://travis-ci.org/mihnita/java-color-loggers.png)](https://travis-ci.org/mihnita/java-color-loggers)
+## Status
+
+**Build:** [![Build Status](https://travis-ci.org/mihnita/java-color-loggers.png)](https://travis-ci.org/mihnita/java-color-loggers)
+
+**DepShield:** ![DepShield Status](https://depshield.sonatype.org/badges/mihnita/java-color-loggers/depshield.svg)
 
 ---
 
