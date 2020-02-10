@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.junit.Test;
+import java.util.logging.Level;
 
 @SuppressWarnings("javadoc")
 public class ColorJdkTest extends ColorBaseTest {
@@ -33,9 +34,12 @@ public class ColorJdkTest extends ColorBaseTest {
         logger.fine("fine");
         logger.finer("finer");
         logger.finest("finest");
+
+        logger.log(Level.WARNING, "warning with exception",
+                new NullPointerException("Just testing"));
     }
 
-	@Test
+    @Test
     public void colorLoggingJdkTest() {
         doTheLogging("logJdkNormal.properties");
         doTheLogging("logJdkColorEsc.properties");

@@ -38,6 +38,14 @@ public class ColorLogbackTest extends ColorBaseTest {
         logger.info("info");
         logger.debug("debug");
         logger.trace("trace");
+
+        System.out.println();
+        Exception e = new NullPointerException("Just testing");
+        logger.error("error with exception", e);
+        logger.warn("warn with exception", e);
+        logger.info("info with exception", e);
+        logger.debug("debug with exception", e);
+        logger.trace("trace with exception", e);
     }
 
     @Test

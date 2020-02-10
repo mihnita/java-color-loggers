@@ -13,7 +13,7 @@ class ColorBaseTest {
         try {
             return url.toURI().getPath();
         } catch (URISyntaxException e) {
-			e.printStackTrace();
+            e.printStackTrace();
         }
 
         return ".";

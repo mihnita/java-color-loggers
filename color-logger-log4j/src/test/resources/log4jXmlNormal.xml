@@ -14,7 +14,7 @@
 	<!-- ******************************************************************* -->
 	<appender name="A" class="org.apache.log4j.ConsoleAppender" >
 		<layout class="org.apache.log4j.EnhancedPatternLayout">
-			<param name="ConversionPattern" value="log4j> %-5p: %c{2} [%t] - %m%n"/>
+			<param name="ConversionPattern" value="log4j> %-5p: %c{2} [%t] - %m%n%throwable"/>
 		</layout>
 	</appender>
 

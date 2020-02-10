@@ -23,7 +23,7 @@
 		<!-- <param name="TraceColour" value="{esc}[90m" /> -->
 
 		<layout class="org.apache.log4j.EnhancedPatternLayout">
-			<param name="ConversionPattern" value="Ansi> %-5p: %c{2} [%t] - %m%n"/>
+			<param name="ConversionPattern" value="Ansi> %-5p: %c{2} [%t] - %m%n%throwable"/>
 		</layout>
 	</appender>
 
