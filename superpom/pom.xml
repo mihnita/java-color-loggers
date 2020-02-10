@@ -58,7 +58,7 @@
 		<required.maven.version>3.0.5</required.maven.version>
 		<org.slf4j.version>1.7.30</org.slf4j.version>
 		<org.jansi.version>1.18</org.jansi.version>
-		<org.log4j.version>2.13.0</org.log4j.version>
+		<org.log4j.version>1.2.17</org.log4j.version>
 		<org.logback.version>1.2.3</org.logback.version>
 		<org.junit.version>4.13</org.junit.version>
 	</properties>
@@ -71,8 +71,8 @@
 				<version>${org.slf4j.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-core</artifactId>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
 				<version>${org.log4j.version}</version>
 			</dependency>
 			<dependency>
