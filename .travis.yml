@@ -1,13 +1,11 @@
-
 language: java
 dist: trusty
 jdk:
-  - openjdk9
-  - openjdk10
-  - openjdk11
   - openjdk7
   - oraclejdk8
   - openjdk8
+  - openjdk9
   - oraclejdk9
+  - openjdk10
+  - openjdk11
   - oraclejdk11
-
