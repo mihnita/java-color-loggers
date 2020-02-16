@@ -39,22 +39,30 @@
 	</issueManagement>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<name>Nexus Releases for Uploads</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
 		<repository>
-			<id>ossrh</id>
-			<name>Nexus Snapshots for Uploads</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<id>sonatype</id>
+			<name>Sonatype Releases</name>
+			<url>${url_sonatype_releases}</url>
 		</repository>
-	 </distributionManagement>
+		<snapshotRepository>
+			<id>sonatype</id>
+			<name>Sonatype Snapshots</name>
+			<url>${url_sonatype_snapshots}</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- These are default values, can be changed in command line, for example
+				mvn -Dmaven.compiler.source=9 -Dmaven.compiler.target=11 ... -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 
-		<java.version>1.7</java.version>
+	    <!-- Nexus deployment URLs -->
+		<staging_maven_plugin_nexusUrl>https://oss.sonatype.org</staging_maven_plugin_nexusUrl>
+		<url_sonatype_releases>${staging_maven_plugin_nexusUrl}/service/local/staging/deploy/maven2/</url_sonatype_releases>
+		<url_sonatype_snapshots>${staging_maven_plugin_nexusUrl}/content/repositories/snapshots</url_sonatype_snapshots>
+
 		<required.maven.version>3.0.5</required.maven.version>
 		<org.slf4j.version>1.7.30</org.slf4j.version>
 		<org.jansi.version>1.18</org.jansi.version>
@@ -131,10 +139,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
-					<configuration>
-					  <source>${java.version}</source>
-					  <target>${java.version}</target>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -146,6 +150,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>
 				</plugin>
+		        <!-- Disable this, to deploy with Sonatype -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
@@ -153,6 +158,27 @@
 					<configuration>
 						<skip>true</skip>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>1.6.8</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>sonatype</serverId>
+						<nexusUrl>${staging_maven_plugin_nexusUrl}/</nexusUrl>
+						<!-- Set this to true and the release will automatically proceed and sync to Central Repository will follow  -->
+						<autoReleaseAfterClose>false</autoReleaseAfterClose>
+					</configuration>
+					<executions>
+						<execution>
+							<id>default-deploy</id>
+							<goals>
+								<goal>deploy</goal>
+							</goals>
+							<phase>deploy</phase>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -212,18 +238,40 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<id>sign</id>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<tsa>http://timestamp.comodoca.com/rfc3161</tsa>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
 					<version>1.6</version>
 					<executions>
 						<execution>
 							<id>sign-artifacts</id>
-							<phase>verify</phase>
+							<!-- <phase>verify</phase> -->
 							<goals>
 								<goal>sign</goal>
 							</goals>
 							<configuration>
+								<skip>true</skip>
 								<keyname>${gpg.keyname}</keyname>
-								<passphraseServerId>${gpg.keyname}</passphraseServerId>
+								<passphrase>${gpg.passphrase}</passphrase>
+								<lockMode>never</lockMode>
+								<gpgArguments>
+									<arg>--no-random-seed-file</arg>
+									<arg>--no-permission-warning</arg>
+								</gpgArguments>
 							</configuration>
 						</execution>
 					</executions>
@@ -232,6 +280,7 @@
 		</pluginManagement>
 	</build>
 
+	<!-- mvn deploy - -show-version - -fail-at-end -DinstallAtEnd=true -DdeployAtEnd=true -P sonatype_deploy,release -->
 	<profiles>
 		<profile>
 			<id>release</id>
@@ -247,7 +296,30 @@
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jarsigner-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<configuration>
+									<skip>false</skip>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>sonatype_deploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
 					</plugin>
 				</plugins>
 			</build>
