@@ -3,7 +3,7 @@
 
 	<groupId>com.mihnita</groupId>
         <artifactId>color-loggers-superpom</artifactId>
-	<version>1.0.7</version>
+	<version>1.0.8-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Color Loggers SuperPOM</name>
