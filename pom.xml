@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.mihnita</groupId>
 		<artifactId>color-loggers-superpom</artifactId>
-		<version>1.0.7-SNAPSHOT</version>
+		<version>1.0.7</version>
 		<relativePath>superpom/pom.xml</relativePath>
 	</parent>
 
