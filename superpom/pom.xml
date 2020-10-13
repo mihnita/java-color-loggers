@@ -68,7 +68,7 @@
 		<org.jansi.version>1.18</org.jansi.version>
 		<org.log4j.version>1.2.17</org.log4j.version>
 		<org.logback.version>1.2.3</org.logback.version>
-		<org.junit.version>4.13</org.junit.version>
+		<org.junit.version>4.13.1</org.junit.version>
 	</properties>
 
 	<dependencyManagement>
