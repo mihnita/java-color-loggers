@@ -1,23 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.mihnita</groupId>
-		<artifactId>color-loggers-superpom</artifactId>
-		<version>1.0.8-SNAPSHOT</version>
-		<relativePath>superpom/pom.xml</relativePath>
-	</parent>
+  <parent>
+    <groupId>com.mihnita</groupId>
+    <artifactId>color-loggers-superpom</artifactId>
+    <version>1.0.8-SNAPSHOT</version>
+    <relativePath>superpom/pom.xml</relativePath>
+  </parent>
 
-	<artifactId>color-loggers</artifactId>
-	<packaging>pom</packaging>
-	<name>Color Loggers</name>
-	<description>A colection of logging extensions that add level-based color.</description>
-	<url>https://github.com/mihnita/java-color-loggers</url>
+  <artifactId>color-loggers</artifactId>
+  <packaging>pom</packaging>
+  <name>Color Loggers</name>
+  <description>A colection of logging extensions that add level-based color.</description>
+  <url>https://github.com/mihnita/java-color-loggers</url>
 
-	<modules>
-		<module>superpom</module>
-		<module>color-logger-jdk</module>
-		<module>color-logger-log4j</module>
-		<module>color-logger-logback</module>
-	</modules>
+  <modules>
+    <module>superpom</module>
+    <module>color-logger-jdk</module>
+    <module>color-logger-log4j</module>
+    <module>color-logger-logback</module>
+  </modules>
 </project>
