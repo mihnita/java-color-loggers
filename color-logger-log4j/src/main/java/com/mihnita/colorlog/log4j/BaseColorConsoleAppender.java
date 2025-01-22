@@ -11,13 +11,17 @@ import java.util.Map;
 
 /** Color Console Appender for log4j: using ANSI sequences */
 abstract class BaseColorConsoleAppender extends ConsoleAppender {
-    private final Map<Level, String> levelToColor = new HashMap<>();
+    private static final String COLOR_RESET = "\u001b[0m";
+    private static final String END_NL = "%n";
+    private static final String END_NL_AND_THROW = "%n%throwable";
+
+    private static final String HIGHLIGHT_END = "{/highlight}";
+    static final String HIGHLIGHT_START = "{highlight}";
+
     private String gPattern = "";
     private boolean gPatternHighlight = false;
-    static final String HIGHLIGHT_START = "{highlight}";
-    private static final String HIGHLIGHT_END = "{/highlight}";
 
-    private static final String COLOR_RESET = "\u001b[0m";
+    private final Map<Level, String> levelToColor = new HashMap<>();
 
     {
         levelToColor.put(Level.FATAL, "\u001b[97;41m");
@@ -108,8 +112,14 @@ abstract class BaseColorConsoleAppender extends ConsoleAppender {
         // Otherwise we put it at the end, or right before the final %n
         if (pattern.contains(HIGHLIGHT_END)) {
             gPattern = pattern.replace(HIGHLIGHT_END, COLOR_RESET);
-        } else if (pattern.endsWith("%n")) {
-            gPattern = pattern.substring(0, pattern.length() - 2) + COLOR_RESET + "%n";
+        } else if (pattern.endsWith(END_NL)) {
+            gPattern =
+                    pattern.substring(0, pattern.length() - END_NL.length()) + COLOR_RESET + END_NL;
+        } else if (pattern.endsWith(END_NL_AND_THROW)) {
+            gPattern =
+                    pattern.substring(0, pattern.length() - END_NL_AND_THROW.length())
+                            + COLOR_RESET
+                            + END_NL_AND_THROW;
         } else {
             gPattern = pattern + COLOR_RESET;
         }
