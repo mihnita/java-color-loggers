@@ -39,28 +39,29 @@ public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
 
     @Override
     protected void subAppend(LoggingEvent event) {
-        @SuppressWarnings("resource")
-        // Eclipse complains about this not being closed, but this is stdout/stderr.
-        PrintStream currentOutput = usingStdErr ? AnsiConsole.err : AnsiConsole.out;
+        try (PrintStream currentOutput = usingStdErr ? AnsiConsole.err() : AnsiConsole.out()) {
 
-        if (!hackPatternString()) {
-            currentOutput.print(getColour(event.getLevel()));
-            currentOutput.print(getLayout().format(event));
-        } else {
-            String color = getColour(event.getLevel());
-            currentOutput.print(getLayout().format(event).replace(HIGHLIGHT_START, color));
+            if (!hackPatternString()) {
+                currentOutput.print(getColour(event.getLevel()));
+                currentOutput.print(getLayout().format(event));
+            } else {
+                String color = getColour(event.getLevel());
+                currentOutput.print(getLayout().format(event).replace(HIGHLIGHT_START, color));
+            }
+
+            if (immediateFlush) {
+                currentOutput.flush();
+            }
         }
-
-        if (immediateFlush)
-            currentOutput.flush();
     }
 
     @Override
     boolean hackPatternString() {
         String theTarget = getTarget();
-        //noinspection StringEquality
-        if (gTarget != theTarget) // I really want to have the same object, not just equal content
+        //no-inspection StringEquality
+        if (gTarget != theTarget) { // I really want to have the same object, not just equal content
             usingStdErr = SYSTEM_ERR.equalsIgnoreCase(theTarget);
+        }
 
         return super.hackPatternString();
     }

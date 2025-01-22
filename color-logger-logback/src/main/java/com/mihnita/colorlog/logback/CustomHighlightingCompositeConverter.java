@@ -1,13 +1,18 @@
 package com.mihnita.colorlog.logback;
 
+import static ch.qos.logback.core.pattern.color.ANSIConstants.BLACK_FG;
+import static ch.qos.logback.core.pattern.color.ANSIConstants.BOLD;
+import static ch.qos.logback.core.pattern.color.ANSIConstants.CYAN_FG;
+import static ch.qos.logback.core.pattern.color.ANSIConstants.DEFAULT_FG;
+import static ch.qos.logback.core.pattern.color.ANSIConstants.GREEN_FG;
+import static ch.qos.logback.core.pattern.color.ANSIConstants.RED_FG;
+import static ch.qos.logback.core.pattern.color.ANSIConstants.YELLOW_FG;
 import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.pattern.color.HighlightingCompositeConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import ch.qos.logback.core.pattern.color.ForegroundCompositeConverterBase;
-
-import static ch.qos.logback.core.pattern.color.ANSIConstants.*;
 
 @SuppressWarnings("javadoc")
-public class CustomHighlightingCompositeConverter extends ForegroundCompositeConverterBase<ILoggingEvent> {
+public class CustomHighlightingCompositeConverter extends HighlightingCompositeConverter {
     static String errorColor   = BOLD + RED_FG;
     static String warningColor = BOLD + YELLOW_FG;
     static String infoColor    = GREEN_FG;

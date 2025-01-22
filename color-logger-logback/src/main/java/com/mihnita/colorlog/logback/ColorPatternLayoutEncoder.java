@@ -13,7 +13,7 @@ public class ColorPatternLayoutEncoder extends PatternLayoutEncoder {
 
         PatternLayout patternLayout = (PatternLayout) this.layout;
         patternLayout.stop();
-        patternLayout.getInstanceConverterMap().put("highlight", "com.mihnita.colorlog.logback.CustomHighlightingCompositeConverter");
+        patternLayout.getInstanceConverterMap().put("highlight", CustomHighlightingCompositeConverter::new);
         patternLayout.start();
 
         this.layout = patternLayout;

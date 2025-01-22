@@ -10,6 +10,11 @@
 	<name>Color Loggers - Logback</name>
 	<description>A logging extension that adds level-based color to Logback.</description>
 
+	<properties>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.slf4j</groupId>

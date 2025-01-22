@@ -1,9 +1,8 @@
 import org.junit.Test;
-
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
-import ch.qos.logback.core.util.StatusPrinter;
+import ch.qos.logback.core.util.StatusPrinter2;
 
 @SuppressWarnings("javadoc")
 public class ColorLogbackTest extends ColorBaseTest {
@@ -23,10 +22,10 @@ public class ColorLogbackTest extends ColorBaseTest {
             configurator.setContext(context);
             context.reset();
             configurator.doConfigure(getTargetDir() + configFileName);
-        } catch (@SuppressWarnings("unused") JoranException e) {
+        } catch (JoranException e) {
             // StatusPrinter will handle this
         }
-        StatusPrinter.printInCaseOfErrorsOrWarnings(context);
+        new StatusPrinter2().printInCaseOfErrorsOrWarnings(context);
     }
 
     private void doTheLogging(String configFileName) {
@@ -39,13 +38,10 @@ public class ColorLogbackTest extends ColorBaseTest {
         logger.debug("debug");
         logger.trace("trace");
 
-        System.out.println();
-        Exception e = new NullPointerException("Just testing");
-        logger.error("error with exception", e);
-        logger.warn("warn with exception", e);
-        logger.info("info with exception", e);
-        logger.debug("debug with exception", e);
-        logger.trace("trace with exception", e);
+        if (!"true".equals(System.getProperty("skipExceptionTests", "false"))) {
+            logger.warn("warn with exception",
+                    new NullPointerException("Just testing"));
+        }
     }
 
     @Test

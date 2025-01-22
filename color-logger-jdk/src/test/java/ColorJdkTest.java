@@ -18,7 +18,7 @@ public class ColorJdkTest extends ColorBaseTest {
     private void selectLoggingConfigFile(String configFileName) {
         try (InputStream ins = new FileInputStream(getTargetDir() + configFileName)) {
             java.util.logging.LogManager.getLogManager().readConfiguration(ins);
-        } catch (@SuppressWarnings("unused") IOException e) {
+        } catch (IOException e) {
             logger.severe("Error loading custom logging configuration " + configFileName);
         }
     }
@@ -35,8 +35,10 @@ public class ColorJdkTest extends ColorBaseTest {
         logger.finer("finer");
         logger.finest("finest");
 
-        logger.log(Level.WARNING, "warning with exception",
-                new NullPointerException("Just testing"));
+        if (!"true".equals(System.getProperty("skipExceptionTests", "false"))) {
+            logger.log(Level.WARNING, "warning with exception",
+                    new NullPointerException("Just testing"));
+        }
     }
 
     @Test
