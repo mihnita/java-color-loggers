@@ -29,7 +29,8 @@ public class AnsiColorConsoleAppender extends BaseColorConsoleAppender {
             qw.write(getLayout().format(event).replace(HIGHLIGHT_START, color));
         }
 
-        if (immediateFlush)
+        if (immediateFlush) {
             qw.flush();
+        }
     }
 }

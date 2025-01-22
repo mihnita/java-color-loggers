@@ -4,7 +4,7 @@ import ch.qos.logback.classic.PatternLayout;
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
 
 /** Extending the {@link ch.qos.logback.classic.encoder.PatternLayoutEncoder} */
-@SuppressWarnings({ "static-method", "javadoc" })
+@SuppressWarnings({"static-method", "javadoc"})
 public class ColorPatternLayoutEncoder extends PatternLayoutEncoder {
 
     @Override
@@ -13,7 +13,9 @@ public class ColorPatternLayoutEncoder extends PatternLayoutEncoder {
 
         PatternLayout patternLayout = (PatternLayout) this.layout;
         patternLayout.stop();
-        patternLayout.getInstanceConverterMap().put("highlight", CustomHighlightingCompositeConverter::new);
+        patternLayout
+                .getInstanceConverterMap()
+                .put("highlight", CustomHighlightingCompositeConverter::new);
         patternLayout.start();
 
         this.layout = patternLayout;

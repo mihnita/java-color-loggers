@@ -1,8 +1,9 @@
-import org.junit.Test;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
 import ch.qos.logback.core.util.StatusPrinter2;
+
+import org.junit.Test;
 
 @SuppressWarnings("javadoc")
 public class ColorLogbackTest extends ColorBaseTest {
@@ -39,8 +40,7 @@ public class ColorLogbackTest extends ColorBaseTest {
         logger.trace("trace");
 
         if (!"true".equals(System.getProperty("skipExceptionTests", "false"))) {
-            logger.warn("warn with exception",
-                    new NullPointerException("Just testing"));
+            logger.warn("warn with exception", new NullPointerException("Just testing"));
         }
     }
 

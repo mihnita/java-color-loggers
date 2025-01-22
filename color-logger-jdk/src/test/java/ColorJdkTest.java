@@ -1,8 +1,8 @@
+import org.junit.Test;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import org.junit.Test;
 import java.util.logging.Level;
 
 @SuppressWarnings("javadoc")
@@ -36,7 +36,9 @@ public class ColorJdkTest extends ColorBaseTest {
         logger.finest("finest");
 
         if (!"true".equals(System.getProperty("skipExceptionTests", "false"))) {
-            logger.log(Level.WARNING, "warning with exception",
+            logger.log(
+                    Level.WARNING,
+                    "warning with exception",
                     new NullPointerException("Just testing"));
         }
     }

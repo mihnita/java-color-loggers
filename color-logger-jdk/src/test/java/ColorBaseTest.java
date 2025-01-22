@@ -1,14 +1,15 @@
+import org.junit.runner.JUnitCore;
+
 import java.net.URISyntaxException;
 import java.net.URL;
-
-import org.junit.runner.JUnitCore;
 
 class ColorBaseTest {
 
     static String getTargetDir() {
         URL url = ColorBaseTest.class.getResource(".");
-        if (null == url)
+        if (null == url) {
             return ".";
+        }
 
         try {
             return url.toURI().getPath();
@@ -20,9 +21,7 @@ class ColorBaseTest {
     }
 
     public static void main(String[] argv) {
-        Class<?> [] classesArray = {
-            ColorJdkTest.class
-        };
+        Class<?>[] classesArray = {ColorJdkTest.class};
         JUnitCore.runClasses(classesArray);
     }
 }

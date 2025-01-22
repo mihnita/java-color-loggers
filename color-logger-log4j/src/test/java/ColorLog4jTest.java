@@ -25,10 +25,9 @@ public class ColorLog4jTest extends ColorBaseTest {
         logger.info("info");
         logger.debug("debug");
         logger.trace("trace");
-        
+
         if (!"true".equals(System.getProperty("skipExceptionTests", "false"))) {
-            logger.warn("warn with XML and exception",
-                    new NullPointerException("Just testing"));
+            logger.warn("warn with XML and exception", new NullPointerException("Just testing"));
         }
     }
 

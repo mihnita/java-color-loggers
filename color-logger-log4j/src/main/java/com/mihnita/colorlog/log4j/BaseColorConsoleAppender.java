@@ -1,13 +1,13 @@
 package com.mihnita.colorlog.log4j;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.EnhancedPatternLayout;
 import org.apache.log4j.Layout;
 import org.apache.log4j.Level;
 import org.apache.log4j.PatternLayout;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /** Color Console Appender for log4j: using ANSI sequences */
 abstract class BaseColorConsoleAppender extends ConsoleAppender {
@@ -22,8 +22,8 @@ abstract class BaseColorConsoleAppender extends ConsoleAppender {
     {
         levelToColor.put(Level.FATAL, "\u001b[97;41m");
         levelToColor.put(Level.ERROR, "\u001b[91m");
-        levelToColor.put(Level.WARN,  "\u001b[93m");
-        levelToColor.put(Level.INFO,  "\u001b[22;32m");
+        levelToColor.put(Level.WARN, "\u001b[93m");
+        levelToColor.put(Level.INFO, "\u001b[22;32m");
         levelToColor.put(Level.DEBUG, "\u001b[22;36m");
         levelToColor.put(Level.TRACE, "\u001b[90m");
     }
@@ -66,8 +66,9 @@ abstract class BaseColorConsoleAppender extends ConsoleAppender {
 
     String getColour(Level level) {
         String result = levelToColor.get(level);
-        if (null == result)
+        if (null == result) {
             return levelToColor.get(Level.ERROR);
+        }
         return result;
     }
 
@@ -82,31 +83,36 @@ abstract class BaseColorConsoleAppender extends ConsoleAppender {
         Class<?> c = this.getLayout().getClass();
         if (EnhancedPatternLayout.class.isAssignableFrom(c)) {
             enhancedPatternLayout = (EnhancedPatternLayout) this.getLayout();
-            if (null == enhancedPatternLayout)
+            if (null == enhancedPatternLayout) {
                 return gPatternHighlight;
+            }
             pattern = enhancedPatternLayout.getConversionPattern();
         } else if (PatternLayout.class.isAssignableFrom(c)) {
             patternLayout = (PatternLayout) this.getLayout();
-            if (null == patternLayout)
+            if (null == patternLayout) {
                 return gPatternHighlight;
+            }
             pattern = patternLayout.getConversionPattern();
-        } else
+        } else {
             return gPatternHighlight;
+        }
 
-        if (gPattern.equals(pattern))
+        if (gPattern.equals(pattern)) {
             return gPatternHighlight;
+        }
 
         int hiStart = pattern.indexOf(HIGHLIGHT_START);
         gPatternHighlight = (hiStart != -1);
 
         // If we have a {/highlight}, we put the COLOR_RESET there
         // Otherwise we put it at the end, or right before the final %n
-        if (pattern.contains(HIGHLIGHT_END))
+        if (pattern.contains(HIGHLIGHT_END)) {
             gPattern = pattern.replace(HIGHLIGHT_END, COLOR_RESET);
-        else if (pattern.endsWith("%n"))
+        } else if (pattern.endsWith("%n")) {
             gPattern = pattern.substring(0, pattern.length() - 2) + COLOR_RESET + "%n";
-        else
+        } else {
             gPattern = pattern + COLOR_RESET;
+        }
 
         if (null != enhancedPatternLayout) {
             enhancedPatternLayout.setConversionPattern(gPattern);
@@ -119,5 +125,4 @@ abstract class BaseColorConsoleAppender extends ConsoleAppender {
 
         return gPatternHighlight;
     }
-
 }

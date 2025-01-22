@@ -1,15 +1,11 @@
 package com.mihnita.colorlog.log4j;
 
-import java.io.PrintStream;
-
 import org.apache.log4j.Layout;
 import org.apache.log4j.spi.LoggingEvent;
 import org.fusesource.jansi.AnsiConsole;
 
-/**
- * Color Console Appender for log4j: using jansi
- * (<a href="http://jansi.fusesource.org/">http://jansi.fusesource.org/</a>)
- * */
+import java.io.PrintStream;
+
 @SuppressWarnings("javadoc")
 public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
     private final String gTarget = null;
@@ -39,7 +35,8 @@ public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
 
     @Override
     protected void subAppend(LoggingEvent event) {
-        try (PrintStream currentOutput = usingStdErr ? AnsiConsole.err() : AnsiConsole.out()) {
+        try (@SuppressWarnings("resource") // false positive. It is in fact closed.
+                PrintStream currentOutput = usingStdErr ? AnsiConsole.err() : AnsiConsole.out()) {
 
             if (!hackPatternString()) {
                 currentOutput.print(getColour(event.getLevel()));
@@ -58,7 +55,7 @@ public class JAnsiColorConsoleAppender extends BaseColorConsoleAppender {
     @Override
     boolean hackPatternString() {
         String theTarget = getTarget();
-        //no-inspection StringEquality
+        // no-inspection StringEquality
         if (gTarget != theTarget) { // I really want to have the same object, not just equal content
             usingStdErr = SYSTEM_ERR.equalsIgnoreCase(theTarget);
         }
